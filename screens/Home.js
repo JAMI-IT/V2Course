@@ -12,6 +12,7 @@ const URL = 'https://color-palette-api.kadikraman.now.sh/palettes';
 
 const Home = ({ navigation, route }) => {
   const newPalette = route.params ? route.params.newPalette : null;
+  
   const [palettes, setPalettes] = useState([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
