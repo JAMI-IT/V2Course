@@ -8,6 +8,7 @@ import {
   FlatList,
   TouchableOpacity,
   Alert,
+
 } from 'react-native';
 
 const COLORS = [

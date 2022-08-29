@@ -5,21 +5,25 @@ import {
   TouchableOpacity,
   Text,
   View,
+  SafeAreaView,
 } from 'react-native';
 
 const PalettePreview = ({ palette, onPress }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <SafeAreaView>
       <Text style={styles.heading}>{palette.paletteName}</Text>
-      <FlatList
-        style={styles.list}
-        data={palette.colors.slice(0, 5)}
-        keyExtractor={item => item.colorName}
-        renderItem={({ item }) => (
-          <View style={[styles.color, { backgroundColor: item.hexCode }]} />
-        )}
-      />
-    </TouchableOpacity>
+
+      <TouchableOpacity onPress={onPress}>
+        <FlatList
+          style={styles.list}
+          data={palette.colors.slice(0, 5)}
+          keyExtractor={item => item.colorName}
+          renderItem={({ item }) => (
+            <View style={[styles.color, { backgroundColor: item.hexCode }]} />
+          )}
+        />
+      </TouchableOpacity>
+    </SafeAreaView>
   );
 };
 
@@ -28,10 +32,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+
   },
   list: {
     flexDirection: 'row',
-    marginBottom: 30,
+    marginBottom: 30,    
   },
   color: {
     shadowColor: '#000',
@@ -42,6 +47,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
     marginRight: 10,
+    borderRadius:5,
   },
 });
 

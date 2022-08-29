@@ -25,7 +25,7 @@ const ColorBox = props => {
 const styles = StyleSheet.create({
   box: {
     padding: 10,
-    borderRadius: 3,
+    borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
