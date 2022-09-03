@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/Home';
 import ColorPalette from './screens/ColorPalette';
 import AddNewPaletteModal from './screens/AddNewPaletteModal';
+import Form from './screens/Form';
 
 const MainStack = createStackNavigator();
 const RootStack = createStackNavigator();
@@ -32,6 +33,7 @@ const App = () => {
           options={{ headerShown: false }}
         />
         <RootStack.Screen name="AddNewPalette" component={AddNewPaletteModal} />
+        <RootStack.Screen name='Form' component={Form}/>
       </RootStack.Navigator>
     </NavigationContainer>
   );

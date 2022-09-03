@@ -5,6 +5,7 @@ import {
   RefreshControl,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import PalettePreview from '../components/PalettePreview';
 
@@ -26,7 +27,7 @@ const Home = ({ navigation, route }) => {
 
   useEffect(() => {
     handleFetchPalettes();
-  }, []);
+  }, [isRefreshing]);
 
   const handleRefresh = useCallback(async () => {
     setIsRefreshing(true);
@@ -44,12 +45,18 @@ const Home = ({ navigation, route }) => {
 
   return (
     <>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('AddNewPalette')}
-      >
-        <Text style={styles.buttonText}>Add a color scheme</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection:'row',}}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('AddNewPalette')}
+        >
+          <Text style={styles.buttonText}>Add a color scheme</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={()=> navigation.navigate('Form')}>
+          <Text style={styles.buttonText}>Hello</Text>
+        </TouchableOpacity>
+      </View>
+
       <FlatList
         style={styles.list}
         data={palettes}
@@ -61,7 +68,10 @@ const Home = ({ navigation, route }) => {
           />
         )}
         refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+          <RefreshControl
+            refreshing={isRefreshing}
+            onRefresh={handleRefresh}
+          />
         }
       />
     </>
