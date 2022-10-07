@@ -14,9 +14,9 @@ export default function Form() {
 
   const handleFullName = useCallback(() => {
     
-    if (FName == false) {
+    if (!FName) {
       Alert.alert('Please Entert The First Name')
-    } else if (LName == false) {
+    } else if (!LName ) {
       Alert.alert('Please Entetr the Last Name')
     }
       else if (operation=='Update') {
@@ -33,29 +33,17 @@ export default function Form() {
         clearstate();
       }
     }
-
   }, [FName, LName])
   
   const handleDelete = useCallback((index) => {
     let ind = info.indexOf(index)
     if (ind >= 0) {
-        {
-          updatetext(index);
-        }
-      info.splice(ind, 1);
+      setInfo(values => values.filter((value,i) => (i !== ind)));
     }
   }, [info,FName,LName])
 
-  const buttonpress = () => {
-    if (operation == true) {
-      console.log(operation);
-    }
-  }
-
   const handleUpdate = index => {
-    {
-      updatetext(index);
-    }
+    { updatetext(index);}
     setindexvalue(info.indexOf(index))
     setoperation('Update');
   };
@@ -65,7 +53,6 @@ export default function Form() {
    };
 
    const clearstate = () => {
-     console.log('Don Clear');
      SetFname('');
      SetLName('');
    }; 
